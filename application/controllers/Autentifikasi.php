@@ -140,6 +140,11 @@ class Autentifikasi extends CI_Controller
         }
     }
 
+    public function logout()
+    {
+        redirect('autentifikasi/index');
+    }
+
 
 
 }
