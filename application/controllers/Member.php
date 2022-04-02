@@ -33,13 +33,13 @@ class Member extends CI_Controller
 
                     $this->session->set_userdata($data);redirect('home');
                 } else {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alertmessage" role="alert">Password salah!!</div>');redirect('home');
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password salah!!</div>');redirect('home');
                 }
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alertdanger alert-message" role="alert">User belum diaktifasi!!</div>');redirect('home');
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">User belum diaktifasi!!</div>');redirect('home');
             }
         } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alertdanger alert-message" role="alert">Email tidak terdaftar!!</div>');redirect('home');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Email tidak terdaftar!!</div>');redirect('home');
         }
     }
 
@@ -74,7 +74,7 @@ class Member extends CI_Controller
             'tanggal_input' => time()
         ];
         $this->ModelUser->simpanData($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alertsuccess alertmessage" role="alert">Selamat!! akun anggota anda sudah dibuat.</div>');redirect(base_url());
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! akun anggota anda sudah dibuat.</div>');redirect(base_url());
     }
 
     public function myProfil()
@@ -131,9 +131,9 @@ class Member extends CI_Controller
             if ($upload_image) {
                 $config['upload_path'] = './assets/img/profile/';
                 $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = '3000';
-                $config['max_width'] = '1024';
-                $config['max_height'] = '1000';
+                $config['max_size'] = '30000';
+                $config['max_width'] = '10240';
+                $config['max_height'] = '10000';
                 $config['file_name'] = 'pro' . time();
     
                 $this->load->library('upload', $config);
@@ -153,7 +153,7 @@ class Member extends CI_Controller
             $this->db->set('nama', $nama);
             $this->db->where('email', $email);
             $this->db->update('user');
-            $this->session->set_flashdata('pesan', '<div class="alert alertsuccess alert-message" role="alert">Profil Berhasil diubah </div>');redirect('member/myprofil');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Profil Berhasil diubah </div>');redirect('member/myprofil');
         }
     }
 
@@ -161,6 +161,6 @@ class Member extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
-        $this->session->set_flashdata('pesan', '<div class="alert alertsuccess alert-message" role="alert">Anda telah logout!!</div>');redirect('home');
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Anda telah logout!!</div>');redirect('home');
     }
 }
